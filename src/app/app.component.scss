@@ -1,0 +1,124 @@
+$customerColor1: rgba(65, 143, 127, 1);
+$customerColor2: rgba(65, 143, 127, 0.75);
+$supplierColor1: rgba(16, 74, 96, 1);
+$supplierColor2: rgba(16, 74, 96, 0.75);
+
+:host {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 20px 20px 100px;
+
+  .input-form {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+
+    mat-form-field {
+      width: 150px;
+    }
+  }
+
+  .tables-container {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      margin: 0;
+      color: $supplierColor1;
+      font-weight: bold;
+    }
+  }
+
+  input {
+    border: none;
+    outline: 0;
+    width: calc(100% - 8px);
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  grid-area: table;
+  width: fit-content;
+  margin: 12px 0;
+
+  td,
+  th {
+    border: 1px solid black;
+    padding: 8px 4px;
+    word-wrap: break-word;
+    max-width: 40px;
+    width: 40px;
+    max-height: 40px;
+
+    &.corner {
+      background-color: silver;
+      user-select: none;
+    }
+
+    &.customer {
+      background-color: $customerColor1;
+      color: white;
+      user-select: none;
+      &:nth-child(odd) {
+        background-color: $customerColor2;
+      }
+    }
+
+    &.supplier {
+      background-color: $supplierColor1;
+      color: white;
+      user-select: none;
+    }
+  }
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  .submit {
+    background-color: $supplierColor1;
+
+    &.disabled {
+      background-color: grey !important;
+    }
+  }
+}
+
+tr:nth-child(odd) {
+  .supplier {
+    background-color: $supplierColor2;
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px 20px 100px;
+
+  mat-label{
+    font-weight: bold !important;
+  }
+}
